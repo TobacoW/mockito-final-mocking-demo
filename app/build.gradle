@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 ext {
     mockitoConfigFile = file("${project.rootDir}/app/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker")
-    mockitoExperimentalFinalMockingEnabled = System.getProperty('mockitoExperimentalFinalMockingEnabled', "true").toBoolean()
+    mockitoExperimentalFinalMockingEnabled = true
 }
 
 android {
@@ -34,6 +34,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.2.15'
+    testCompile 'pl.pragmatists:JUnitParams:1.0.5'
 }
 
 def enableMockingOfFinalClasses() {
