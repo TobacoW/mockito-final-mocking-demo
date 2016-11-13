@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+ext {
+    mockitoConfigFile = file("${project.rootDir}/app/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker")
+    mockitoExperimentalFinalMockingEnabled = System.getProperty('mockitoExperimentalFinalMockingEnabled', "true").toBoolean()
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
@@ -17,6 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions.unitTests.all {
+        mockitoExperimentalFinalMockingEnabled ? enableMockingOfFinalClasses() : disableMockingOfFinalClasses()
+    }
 }
 
 dependencies {
@@ -26,4 +34,19 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+}
+
+def enableMockingOfFinalClasses() {
+    ext.mockitoConfigFile.getParentFile().mkdirs()
+    def writer = new FileWriter(mockitoConfigFile)
+    try {
+        writer.write('mock-maker-inline')
+        writer.flush()
+    } finally {
+        writer.close()
+    }
+}
+
+def disableMockingOfFinalClasses() {
+    ext.mockitoConfigFile.delete()
 }
