@@ -34,7 +34,13 @@ captures/
 
 # Intellij
 *.iml
-.idea/workspace.xml
+.idea
+!.idea/codeStyleSettings.xml
+!.idea/encodings.xml
+!.idea/inspectionProfiles
 
 # Keystore files
 *.jks
+
+# Mockito config file
+org.mockito.plugins.MockMaker
