@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 ext {
     mockitoConfigFile = file("${project.rootDir}/app/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker")
-    mockitoExperimentalFinalMockingEnabled = true
+    mockitoExperimentalFinalMockingEnabled = System.getProperty('mockitoExperimentalFinalMockingEnabled', "true").toBoolean()
 }
 
 android {
