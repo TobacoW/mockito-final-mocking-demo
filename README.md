@@ -1,7 +1,7 @@
 # mockito-final-mocking-demo
-A demo of incubating feature of Mockit 2.x that lat you mock final classes/methods: https://github.com/mockito/mockito/wiki/What%27s-new-in-Mockito-2#unmockable
+A demo of incubating feature of Mockit 2.x that let you mock final classes/methods: https://github.com/mockito/mockito/wiki/What%27s-new-in-Mockito-2#unmockable
 
-Final mocking feature can be enabled/disables directly from Gradle by `enableMockingOfFinalClasses()` and `disableMockingOfFinalClasses()` methods.
+Final mocking feature can be enabled/disabled directly from Gradle by `enableMockingOfFinalClasses()` and `disableMockingOfFinalClasses()` methods.
 
 ## Performance of org.mockito:mockito-core:2.2.15
 ### Mockito experimental final mocking DISABLED
